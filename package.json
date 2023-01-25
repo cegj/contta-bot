@@ -1,0 +1,27 @@
+{
+  "name": "contta-bot",
+  "version": "1.0.0",
+  "description": "A telegram bot for Contta",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cegj/contta-bot.git"
+  },
+  "author": "cegj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cegj/contta-bot/issues"
+  },
+  "homepage": "https://github.com/cegj/contta-bot#readme",
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.57.6"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.61.0"
+  }
+}
