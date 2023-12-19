@@ -1,11 +1,11 @@
 import fetch from 'node-fetch';
-import { POST_EXPENSE, POST_LOGIN } from '../../api.js';
+import { GET_CATEGORIES, POST_LOGIN } from '../../api.js';
 import {config} from '../config.js';
 
 
-export default class TransactionController {
+export default class CategoryController {
 
-  static async storeTransaction(body){
+  static async getGroupsAndCategories(){
 
     const {url, options} = POST_LOGIN({email: config.apiUser, password: config.apiPassword})
     const response = await fetch(url, options)
@@ -18,19 +18,13 @@ export default class TransactionController {
     const {access_token} = await response.json()
     if (access_token) {
       let url, options;
-      if (body.type === "R") {
-        const apiParams = POST_INCOME(body, access_token)
-        url = apiParams.url;
-        options = apiParams.options;
-      }
-      if (body.type === "D") {
-        const apiParams = POST_EXPENSE(body, access_token)
-        url = apiParams.url;
-        options = apiParams.options;
-      }
-
+      const apiParams = GET_CATEGORIES(access_token)
+      url = apiParams.url;
+      options = apiParams.options;
       const response = await fetch(url, options)
-      return response
+      const json = await response.json()
+      // console.log('not-error', json)
+      return json
     }
   }
 }

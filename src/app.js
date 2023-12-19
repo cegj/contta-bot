@@ -7,7 +7,8 @@ export const bot = new TelegramBot(token, { polling: true });
 
 async function sendWelcomeMsg(chatId) {
   await bot.sendMessage(chatId, 'Olá, eu sou o bot do Contta! 🤖')
-  await bot.sendMessage(chatId, 'Lembre-se de sempre responder diretamente às minhas mensagens. Assim eu entendo melhor!')
+  await bot.sendMessage(chatId, 'Lembre-se de sempre responder diretamente as minhas mensagens. As mensagens que devem ser respondidas começam sempre com este emoji: ↩️')
+  await bot.sendMessage(chatId, 'Selecione um comando para iniciar')
 }
 
 const options = {
@@ -30,8 +31,11 @@ async function validateUser(chatId, username) {
   }
 }
 
-bot.onText(/\/n/, async (msg) => {
+bot.onText(/\/start/, async (msg) => {
   await sendWelcomeMsg(msg.chat.id);
+});
+
+bot.onText(/\/n/, async (msg) => {
   if (await validateUser(msg.chat.id, msg.from.username)){
     await newTransaction.chat(msg.chat.id);
   }

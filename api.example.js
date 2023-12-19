@@ -43,3 +43,31 @@ export function POST_EXPENSE(body, token){
     }
   }
 }
+
+export function GET_CATEGORIES(token){
+  return {
+    url: API_URL + '/categories/groups',
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    }
+  }
+}
+
+export function GET_ACCOUNTS(token){
+  return {
+    url: API_URL + '/accounts',
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    }
+  }
+}
