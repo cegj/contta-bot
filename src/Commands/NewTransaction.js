@@ -109,6 +109,7 @@ export default class newTransaction {
       const sentMsg = await bot.sendMessage(chatId, txts.value.main, options);  
       bot.onReplyToMessage(chatId, sentMsg.message_id, async (msg) => {
         if(validAnswers.value.test(msg.text)){
+          if (!msg.text.includes(",")){ msg.text += ",00" }
           const intValue = +msg.text.replace(/\./g, '').replace(',', '') 
           body.value = intValue;
           await getDescription()
