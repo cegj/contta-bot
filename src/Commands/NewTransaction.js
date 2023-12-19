@@ -150,7 +150,8 @@ export default class newTransaction {
       const categoryMsg = await bot.sendMessage(chatId, msgTxt, options); 
       bot.onReplyToMessage(chatId, categoryMsg.message_id, async(msg) => {
         if(validAnswers.category.test(msg.text)){
-          body.category_id = msg.text;
+          if (msg.text == "0") { body.category_id = "" }
+          else { body.category_id = msg.text; }
           await getAccount();
         } else {
           body.category_id = null
@@ -171,7 +172,8 @@ export default class newTransaction {
       const accountMsg = await bot.sendMessage(chatId, msgTxt, options); 
       bot.onReplyToMessage(chatId, accountMsg.message_id, async(msg) => {
         if(validAnswers.account.test(msg.text)){
-          body.account_id = msg.text;
+          if (msg.text == "0") { body.account_id = "" }
+          else { body.account_id = msg.text; }
           await getInstallments();
         } else {
           body.account_id = null
