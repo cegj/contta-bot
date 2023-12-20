@@ -3,17 +3,23 @@ import TransactionController from '../Controller/TransactionController.js';
 import CategoryController from '../Controller/CategoryController.js';
 import AccountController from '../Controller/AccountController.js';
 import { NewTransactionTxts as txts } from '../Texts/NewTransactionTxts.js';
+import { chatOptions as options } from '../Config/ChatOptions.js';
 
-export default class newTransaction {
+export default class NewTransaction {
   static async chat(chatId) {
-    const options = {
-      reply_markup: {
-        force_reply: true
-      },
-      parse_mode: "HTML"
+    const body = {
+      type: null,
+      transaction_date: null,
+      payment_date: null,
+      value: null,
+      description: null,
+      category_id: null,
+      account_id: null,
+      preview: false,
+      usual: false,
+      budget_control: false,
+      total_installments: null
     }
-
-    const body = { type: null, transaction_date: null, payment_date: null, value: null, description: null, category_id: null, account_id: null, preview: false, usual: false, budget_control: false, total_installments: null }
     
     const validAnswers = {
       type: {
@@ -203,11 +209,11 @@ export default class newTransaction {
       await bot.sendMessage(chatId, "Estou registrando a transação...");
       const response = await TransactionController.storeTransaction(body)
       if (response.status === 200){
-        await bot.sendMessage(chatId, "Transação registrada! 😊");
+        await bot.sendMessage(chatId, txts.end.main);
       } else {
         let error = await response.json()
         error = error.error || error.message
-        await bot.sendMessage(chatId, "Ocorreu um erro! 🥲");
+        await bot.sendMessage(chatId, txts.end.error);
         await bot.sendMessage(chatId, error);
       }
     }

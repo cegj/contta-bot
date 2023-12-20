@@ -1,5 +1,7 @@
 import { bot } from '../app.js'
+import TransactionController from '../Controller/TransactionController.js';
 import CategoryController from '../Controller/CategoryController.js';
+import AccountController from '../Controller/AccountController.js';
 import { CheckBudgetTxts as txts } from '../Texts/CheckBudgetTxts.js';
 import { chatOptions as options } from '../Config/ChatOptions.js';
 import DateHelpers from '../Helpers/DateHelpers.js';

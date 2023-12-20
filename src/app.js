@@ -1,6 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api';
 import { config } from './config.js';
-import newTransaction from './Commands/NewTransaction.js';
+import NewTransaction from './Commands/NewTransaction.js';
+import CheckBudget from './Commands/CheckBudget.js';
 
 const token = config.botToken;
 export const bot = new TelegramBot(token, { polling: true });
@@ -37,7 +38,13 @@ bot.onText(/\/start/, async (msg) => {
 
 bot.onText(/\/n/, async (msg) => {
   if (await validateUser(msg.chat.id, msg.from.username)){
-    await newTransaction.chat(msg.chat.id);
+    await NewTransaction.chat(msg.chat.id);
+  }
+});
+
+bot.onText(/\/o/, async (msg) => {
+  if (await validateUser(msg.chat.id, msg.from.username)){
+    await CheckBudget.chat(msg.chat.id);
   }
 });
 
