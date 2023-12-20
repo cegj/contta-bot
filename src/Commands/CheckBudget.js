@@ -17,7 +17,8 @@ export default class CheckBudget {
     const validAnswers = {
         date: {
           today: ["hoje", "h"],
-          format: /^(0[1-9]|1[012])\/[12][0-9]{3}$/
+          monthYearFormat: /^(0[1-9]|1[012])\/[12][0-9]{3}$/,
+          monthFormat: /(^0?[1-9]$)|(^1[0-2]$)/
         },
         ifCategory: {
             yes: ["s", "sim"],
@@ -40,14 +41,18 @@ export default class CheckBudget {
           query.from = firstDay
           query.to = lastDay
           await getBudget();
-        // } else // COLOCAR PARA RECEBER SOMENTE O MÊS (CONSIDERAR O ANO CORRENTE)
-        //   if(validAnswers.date.yesterday.includes(msg.text.toLowerCase())){
-        //   const yesterday = new Date(msg.date * 1000 - 86400000)
-        //   const yesterdayStr = yesterday.toLocaleString('sv-SE', { timeZone: 'America/Sao_Paulo' }).split(' ')[0]
-        //   body.transaction_date = yesterdayStr;
-        //   await getPaymentDate();
+        } else // COLOCAR PARA RECEBER SOMENTE O MÊS (CONSIDERAR O ANO CORRENTE)
+          if(validAnswers.date.monthFormat.test(msg.text)){
+            const today = new Date(msg.date * 1000)
+            const year = today.toLocaleString('sv-SE', { timeZone: 'America/Sao_Paulo' }).split(' ')[0].split('-')[0]
+            const month = msg.text
+            const firstDay = DateHelpers.getFirstDay(year, month)
+            const lastDay = DateHelpers.getLastDay(year, month)
+            query.from = firstDay
+            query.to = lastDay
+            await getBudget();
         } else
-          if(validAnswers.date.format.test(msg.text)){
+          if(validAnswers.date.monthYearFormat.test(msg.text)){
             const monthYearArr = msg.text.split('/')
             const firstDay = DateHelpers.getFirstDay(monthYearArr[1], monthYearArr[0])
             const lastDay = DateHelpers.getLastDay(monthYearArr[1], monthYearArr[0])
