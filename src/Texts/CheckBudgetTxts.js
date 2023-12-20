@@ -4,13 +4,13 @@ export const CheckBudgetTxts = {
       retry: "Por favor, informe uma data no formato indicado. Lembre-se de marcar a mensagem para resposta."
     },
     ifCategory: {
-      main: "↩️ 🏷️ Deseja verificar o orçamento de alguma <b>categoria</b> específica? Responda Sim (S) ou Não (N)",
+      main: "↩️ 🏷️ Deseja verificar o orçamento de alguma <b>categoria</b> específica?\n\nResponda Sim (S) ou Não (N)",
       loopMain: "↩️ 🏷️ Deseja verificar o orçamento de outra <b>categoria</b>? Responda Sim (S) ou Não (N)",
       retry: "Por favor, responda Sim (S) ou Não (N). Lembre-se de marcar a mensagem para resposta.",
       retrieving: "Aguarde um momento, estou buscando a lista de categorias..."
     },
     category: {
-      main: "↩️ 🏷️ Você quer ver o orçamento de qual <b>categoria</b>? Informe o <i>número</i> correspondente.\n\n",
+      main: "↩️ 🏷️ Você quer ver o orçamento de qual <b>categoria</b>?\n\nInforme o número correspondente.\n\n",
       retry: "Por favor, informe um número correspondente a uma categoria. Lembre-se de marcar a mensagem para resposta.",
     },
     generalResult: {
