@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { GET_BALANCE_FOR_BUDGET, GET_CATEGORIES, POST_LOGIN } from '../../api.mjs';
+import { GET_BALANCE_FOR_BUDGET, GET_CATEGORIES, POST_LOGIN } from '../api.mjs';
 import {config} from '../config.mjs';
 
 

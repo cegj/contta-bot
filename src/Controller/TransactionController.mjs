@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { POST_EXPENSE, POST_LOGIN } from '../../api.mjs';
+import { POST_EXPENSE, POST_LOGIN } from '../api.mjs';
 import {config} from '../config.mjs';
 
 
