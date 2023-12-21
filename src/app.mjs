@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api';
-import { config } from './config.js';
-import NewTransaction from './Commands/NewTransaction.js';
-import CheckBudget from './Commands/CheckBudget.js';
+import { config } from './config.mjs';
+import NewTransaction from './Commands/NewTransaction.mjs';
+import CheckBudget from './Commands/CheckBudget.mjs';
 
 const token = config.botToken;
 export const bot = new TelegramBot(token, { polling: true });

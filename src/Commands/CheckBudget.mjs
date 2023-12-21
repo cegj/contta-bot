@@ -1,9 +1,9 @@
-import { bot } from '../app.js'
-import CategoryController from '../Controller/CategoryController.js';
-import { CheckBudgetTxts as txts } from '../Texts/CheckBudgetTxts.js';
-import { chatOptions as options } from '../Config/ChatOptions.js';
-import DateHelpers from '../Helpers/DateHelpers.js';
-import BalanceController from '../Controller/BalanceController.js';
+import { bot } from '../app.mjs'
+import CategoryController from '../Controller/CategoryController.mjs';
+import { CheckBudgetTxts as txts } from '../Texts/CheckBudgetTxts.mjs';
+import { chatOptions as options } from '../Config/chatOptions.mjs';
+import DateHelpers from '../Helpers/DateHelpers.mjs';
+import BalanceController from '../Controller/BalanceController.mjs';
 
 export default class CheckBudget {
   static async chat(chatId) {

@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import { GET_CATEGORIES, POST_LOGIN } from '../../api.js';
-import {config} from '../config.js';
+import { GET_CATEGORIES, POST_LOGIN } from '../../api.mjs';
+import {config} from '../config.mjs';
 
 
 export default class CategoryController {

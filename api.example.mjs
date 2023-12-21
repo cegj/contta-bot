@@ -1,4 +1,6 @@
-export const API_URL = 'YOUR_API_URL';
+import objectToQueryString from "./src/Helpers/objectToQueryString.mjs";
+
+export const API_URL = '';
 
 export function POST_LOGIN(body){
   return {
@@ -68,6 +70,20 @@ export function GET_ACCOUNTS(token){
         'Content-Type': 'application/json',
         Accept: 'application/json'
       }
+    }
+  }
+}
+
+export function GET_BALANCE_FOR_BUDGET(token, queryObject){
+  const query = objectToQueryString(queryObject)
+
+  return {
+    url: API_URL + `/balances/budget?${query}`,
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token
+      }  
     }
   }
 }

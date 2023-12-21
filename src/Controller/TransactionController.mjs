@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import { POST_EXPENSE, POST_LOGIN } from '../../api.js';
-import {config} from '../config.js';
+import { POST_EXPENSE, POST_LOGIN } from '../../api.mjs';
+import {config} from '../config.mjs';
 
 
 export default class TransactionController {

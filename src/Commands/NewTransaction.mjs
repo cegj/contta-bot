@@ -1,9 +1,9 @@
-import { bot } from '../app.js'
-import TransactionController from '../Controller/TransactionController.js';
-import CategoryController from '../Controller/CategoryController.js';
-import AccountController from '../Controller/AccountController.js';
-import { NewTransactionTxts as txts } from '../Texts/NewTransactionTxts.js';
-import { chatOptions as options } from '../Config/ChatOptions.js';
+import { bot } from '../app.mjs'
+import TransactionController from '../Controller/TransactionController.mjs';
+import CategoryController from '../Controller/CategoryController.mjs';
+import AccountController from '../Controller/AccountController.mjs';
+import { NewTransactionTxts as txts } from '../Texts/NewTransactionTxts.mjs';
+import { chatOptions as options } from '../Config/chatOptions.mjs';
 
 export default class NewTransaction {
   static async chat(chatId) {
