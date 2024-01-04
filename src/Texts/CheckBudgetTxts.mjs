@@ -1,6 +1,6 @@
 export const CheckBudgetTxts = {
     month: {
-      main: "↩️ 📅 Qual é o <b>mês e o ano</b> do orçamento que você deseja verificar?\n\nInforme no formato MM/AAAA (ou somente MM caso o ano seja o atual) ou Hoje (H) para o mês atual.",
+      main: "↩️ 📅 Qual é o <b>mês e o ano</b> do orçamento que você deseja verificar?\n\nInforme no formato MM/AAAA (ou somente MM para o ano corrente) ou Hoje (H) para o mês atual.",
       retry: "Por favor, informe uma data no formato indicado. Lembre-se de marcar a mensagem para resposta."
     },
     ifCategory: {

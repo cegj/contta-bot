@@ -41,7 +41,7 @@ export default class CheckBudget {
           query.from = firstDay
           query.to = lastDay
           await getBudget();
-        } else // COLOCAR PARA RECEBER SOMENTE O MÊS (CONSIDERAR O ANO CORRENTE)
+        } else
           if(validAnswers.date.monthFormat.test(msg.text)){
             const today = new Date(msg.date * 1000)
             const year = today.toLocaleString('sv-SE', { timeZone: 'America/Sao_Paulo' }).split(' ')[0].split('-')[0]
