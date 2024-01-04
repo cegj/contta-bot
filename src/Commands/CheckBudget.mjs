@@ -62,13 +62,13 @@ export default class CheckBudget {
         } else {
             query.from = null
             query.to = null
-            bot.sendMessage(chatId, txts.month.retry,{...options, reply_markup: {force_reply: false}})
+            await bot.sendMessage(chatId, txts.month.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
 
     async function getBudget(){
-        bot.sendMessage(chatId, txts.generalResult.retrieving,{...options, reply_markup: {force_reply: false}})
+        await bot.sendMessage(chatId, txts.generalResult.retrieving,{...options, reply_markup: {force_reply: false}})
         budget = await BalanceController.getBalanceForBudget(query)
         await sendMonthBudget()
     }
@@ -100,7 +100,7 @@ export default class CheckBudget {
         - Só executados: R$ ${values.accumulated.made.toString().replace('.', ',')}
         - Diferença: R$ ${values.accumulated.result.toString().replace('.', ',')}
         `
-        bot.sendMessage(chatId, msgTxt,{...options, reply_markup: {force_reply: false}})
+        await bot.sendMessage(chatId, msgTxt,{...options, reply_markup: {force_reply: false}})
         await askIfCategory();
     }
 
@@ -109,7 +109,7 @@ export default class CheckBudget {
         bot.onReplyToMessage(chatId, sentMsg.message_id, async (msg) => {
           if(validAnswers.ifCategory.yes.includes(msg.text.toLowerCase())){
             if (!loop){
-                bot.sendMessage(chatId, txts.ifCategory.retrieving,{...options, reply_markup: {force_reply: false}})
+                await bot.sendMessage(chatId, txts.ifCategory.retrieving,{...options, reply_markup: {force_reply: false}})
                 groups = await CategoryController.getGroupsAndCategories()    
             }
             await getCategory();
@@ -117,7 +117,7 @@ export default class CheckBudget {
             if(validAnswers.ifCategory.no.includes(msg.text.toLowerCase())){
               await end();
         } else {
-            bot.sendMessage(chatId, txts.type.retry,{...options, reply_markup: {force_reply: false}})
+            await bot.sendMessage(chatId, txts.type.retry,{...options, reply_markup: {force_reply: false}})
           }
         })  
       }
@@ -139,7 +139,7 @@ export default class CheckBudget {
         if(validAnswers.category.test(msg.text)){
           await sendCategoryBudget(msg.text);
         } else {
-          bot.sendMessage(chatId, txts.category.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.category.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
@@ -161,7 +161,7 @@ export default class CheckBudget {
     }
 
     async function end(){
-        bot.sendMessage(chatId, txts.end.main,{...options, reply_markup: {force_reply: false}})
+        await bot.sendMessage(chatId, txts.end.main,{...options, reply_markup: {force_reply: false}})
     }
 
     await startAndGetMonth();

@@ -52,7 +52,7 @@ export default class NewTransaction {
           await getTransactionDate();
         } else {
         body.type = null
-        bot.sendMessage(chatId, txts.type.retry,{...options, reply_markup: {force_reply: false}})
+        await bot.sendMessage(chatId, txts.type.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
@@ -79,7 +79,7 @@ export default class NewTransaction {
           await getPaymentDate();
         } else {
           body.transaction_date = null
-          bot.sendMessage(chatId, txts.transactionDate.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.transactionDate.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
@@ -106,7 +106,7 @@ export default class NewTransaction {
             await getValue();
         } else {
           body.payment_date = null
-          bot.sendMessage(chatId, txts.transactionDate.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.transactionDate.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
@@ -121,7 +121,7 @@ export default class NewTransaction {
           await getDescription()
         } else {
           body.value = null
-          bot.sendMessage(chatId, txts.value.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.value.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
@@ -134,13 +134,13 @@ export default class NewTransaction {
           await getCategory();
         } else {
           body.description = null
-          bot.sendMessage(chatId, txts.description.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.description.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
 
     async function getCategory(){
-      bot.sendMessage(chatId, txts.category.retrieving,{...options, reply_markup: {force_reply: false}})
+      await bot.sendMessage(chatId, txts.category.retrieving,{...options, reply_markup: {force_reply: false}})
       let groups = await CategoryController.getGroupsAndCategories()
       let msgTxt = "";
       msgTxt += txts.category.main;
@@ -161,13 +161,13 @@ export default class NewTransaction {
           await getAccount();
         } else {
           body.category_id = null
-          bot.sendMessage(chatId, txts.category.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.category.retry,{...options, reply_markup: {force_reply: false}})
         }
       })  
     }
 
     async function getAccount(){
-      bot.sendMessage(chatId, txts.account.retrieving,{...options, reply_markup: {force_reply: false}})
+      await bot.sendMessage(chatId, txts.account.retrieving,{...options, reply_markup: {force_reply: false}})
       let accounts = await AccountController.getAccounts()
       let msgTxt = "";
       msgTxt += txts.account.main;
@@ -183,7 +183,7 @@ export default class NewTransaction {
           await getInstallments();
         } else {
           body.account_id = null
-          bot.sendMessage(chatId, txts.account.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.account.retry,{...options, reply_markup: {force_reply: false}})
         }
       })
     }
@@ -200,7 +200,7 @@ export default class NewTransaction {
             await store();
         } else {
           body.total_installments = null
-          bot.sendMessage(chatId, txts.installments.retry,{...options, reply_markup: {force_reply: false}})
+          await bot.sendMessage(chatId, txts.installments.retry,{...options, reply_markup: {force_reply: false}})
         }
       })
     }
