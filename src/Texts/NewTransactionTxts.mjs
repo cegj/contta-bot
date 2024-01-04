@@ -4,11 +4,11 @@ export const NewTransactionTxts = {
       retry: "Por favor, informe Despesa (D) ou Receita (R). Lembre-se de marcar a mensagem para resposta."
     },
     transactionDate: {
-      main: "↩️ 📅 Qual é a <b>data da transação</b>?\n\nInforme DD/MM/AAAA, Hoje (H) ou Ontem (O)",
+      main: "↩️ 📅 Qual é a <b>data da transação</b>?\n\nInforme DD/MM/AAAA, Hoje (H), Ontem (O), ou Próximo dia 1º (P)",
       retry: "Por favor, informe uma data válida no formato correto. Lembre-se de marcar a mensagem para resposta."
     },
     paymentDate: {
-      main: "↩️ 📅 Qual é a <b>data do pagamento</b>?\n\nInforme DD/MM/AAAA, Hoje (H) ou Ontem (O)",
+      main: "↩️ 📅 Qual é a <b>data do pagamento</b>?\n\nInforme DD/MM/AAAA, Hoje (H), Ontem (O) ou Próximo dia 1º (P)",
       retry: "Por favor, informe uma data válida no formato correto. Lembre-se de marcar a mensagem para resposta."
     },
     value: {

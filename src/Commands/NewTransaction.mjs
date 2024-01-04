@@ -29,6 +29,7 @@ export default class NewTransaction {
       date: {
         today: ["hoje", "h"],
         yesterday: ["ontem", "o"],
+        nextMonth: ["próximo dia 1º", "proximo dia 1º", "proximo dia 1", "próximo dia 1", "p"],
         format: /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
       },
       value: /^(\d+(?:[\.\,]\d{2})?)$/,
@@ -72,11 +73,18 @@ export default class NewTransaction {
           body.transaction_date = yesterdayStr;
           await getPaymentDate();
         } else
-          if(validAnswers.date.format.test(msg.text)){
-          const dateArr = msg.text.split('/')
-          const dateStr = `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`
-          body.transaction_date = dateStr;
-          await getPaymentDate();
+          if(validAnswers.date.nextMonth.includes(msg.text.toLowerCase())){
+            const today = new Date(msg.date * 1000)
+            const nextMonth = new Date(today.getFullYear(), today.getMonth()+1, 1);
+            const nextMonthStr = nextMonth.toLocaleString('sv-SE', { timeZone: 'America/Sao_Paulo' }).split(' ')[0]
+            body.transaction_date = nextMonthStr;
+            await getPaymentDate();
+          } else
+            if(validAnswers.date.format.test(msg.text)){
+              const dateArr = msg.text.split('/')
+              const dateStr = `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`
+              body.transaction_date = dateStr;
+              await getPaymentDate();
         } else {
           body.transaction_date = null
           await bot.sendMessage(chatId, txts.transactionDate.retry,{...options, reply_markup: {force_reply: false}})
@@ -97,6 +105,13 @@ export default class NewTransaction {
             const yesterday = new Date(msg.date * 1000 - 86400000)
             const yesterdayStr = yesterday.toLocaleString('sv-SE', { timeZone: 'America/Sao_Paulo' }).split(' ')[0]
             body.payment_date = yesterdayStr;
+            await getValue();
+        } else
+          if(validAnswers.date.nextMonth.includes(msg.text.toLowerCase())){
+            const today = new Date(msg.date * 1000)
+            const nextMonth = new Date(today.getFullYear(), today.getMonth()+1, 1);
+            const nextMonthStr = nextMonth.toLocaleString('sv-SE', { timeZone: 'America/Sao_Paulo' }).split(' ')[0]
+            body.payment_date = nextMonthStr;
             await getValue();
         } else
           if(validAnswers.date.format.test(msg.text)){
