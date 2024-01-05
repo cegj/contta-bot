@@ -4,7 +4,7 @@ export const setTransactionsAsMadeTxts = {
       retry: "Por favor, informe uma data no formato indicado. Lembre-se de marcar a mensagem para resposta."
     },
     typeOfDate: {
-      main: "↩️ 📅 Qual é o <b>tipo de data</b> que deve ser considerada para buscar as transações?\n\nInforme Data da transação (T) ou Data do pagamento (P)",
+      main: "↩️ 📅 Qual é o <b>tipo de data</b> que deve ser considerada para buscar as transações?\n\nInforme Data da Transação (T) ou Data do Pagamento (P)",
       retry: "Por favor, responda Transação (T) ou Pagamento (P) para selecionar um tipo de data. Lembre-se de marcar a mensagem para resposta."
     },
     category: {
